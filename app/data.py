@@ -1,7 +1,7 @@
 
 def submit(info,resume):
-    if not resume:
-        return 711
+    #if not resume:
+    #    return 711
     check_flag=check_type(info)
     if not check_flag:
         return check_flag

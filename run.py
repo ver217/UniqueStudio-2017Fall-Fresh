@@ -1,9 +1,8 @@
 from sanic import Sanic
-from app import views
+from app import app
 
 allow_host=""
 
-app = Sanic()
 
 db_settings = {
     'DB_HOST': 'localhost',
@@ -11,7 +10,7 @@ db_settings = {
     'DB_USER': 'appuser'
 }
 
-app.config.update(db_settings)
+app.config.update(db_settings) 
+app.run(host="0.0.0.0",port=8000,workers=8)
 
-if __name__=="__main__":
-    app.run(host="0.0.0.0",port=8000,workers=8)
+
