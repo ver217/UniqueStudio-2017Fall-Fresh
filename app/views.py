@@ -23,7 +23,6 @@ async def submit(request):
         "status": "success"
     }
     info=request.json
-    print(info)
     resume=request.files.get('resume')
     code=data.submit(info)
     if code!=0:
