@@ -4,9 +4,9 @@ from app import app
 
 save_path = os.getcwd() + "/resume"
 
-insert_cmd = "INSERT INTO INFO(name,sex,college,major,grade,area,phone,email,team,intro,resume) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);"
+insert_cmd = "INSERT INTO info(name,sex,college,major,grade,area,phone,email,team,intro,resume) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);"
 
-select_cmd = "SELECT * FROM INFO"
+select_cmd = "SELECT * FROM info"
 
 args_list = [
     "name",

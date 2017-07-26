@@ -1,5 +1,6 @@
 from app import data, app, mysql_config
 from sanic.response import json
+from sanic.exceptions import ServerError
 import pymysql
 
 
@@ -15,7 +16,7 @@ def db_setup():
 
 @app.listener('before_server_start')
 async def setup_db(app, loop):
-    app.db = await db_setup()
+    app.db = db_setup()
 
 
 @app.listener('after_server_start')
@@ -30,7 +31,7 @@ async def notify_server_stopping(app, loop):
 
 @app.listener('after_server_stop')
 async def close_db(app, loop):
-    await app.db.close()
+    app.db.close()
 
 
 @app.route("/api/signup/submit", methods=["POST"])
@@ -63,3 +64,7 @@ async def post(request):
 async def get_info(request):
     result = data.get_info()
     return json({"list": result})
+
+@app.exception(ServerError)
+def error(request,exception):
+    return json({"status":"fail","error_code":710})
