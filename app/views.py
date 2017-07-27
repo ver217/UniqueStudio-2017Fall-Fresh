@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 from app import data, app, mysql_config
 from sanic.response import json
-from sanic.exceptions import INTERNAL_SERVER_ERROR_HTML
+from sanic.exceptions import SanicException
 import pymysql
 
 
@@ -82,6 +82,6 @@ async def get_resume(request):
         return json({"result": result})
 
 
-@app.exception(INTERNAL_SERVER_ERROR_HTML)
+@app.exception(SanicException)
 def error(request, exception):
     return json({"status": "fail", "error_code": 710})
