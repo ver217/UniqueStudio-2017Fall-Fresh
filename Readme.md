@@ -13,7 +13,6 @@ USE submit_info;
 CREATE TABLE `info` (
   `name` varchar(50) NOT NULL,
   `sex` varchar(10) NOT NULL,
-  `college` varchar(100) NOT NULL,
   `major` varchar(100) NOT NULL,
   `grade` int(11) NOT NULL,
   `area` varchar(100) NOT NULL,

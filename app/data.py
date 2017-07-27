@@ -28,7 +28,7 @@ xss_list = [
 ]
 
 insert_cmd = "INSERT INTO info(" + "".join(
-    map(lambda x: x + ',', args_list[:-1])) + "resume) VALUES(%s" + 10 * ",%s" + ");"
+    [x+',' for x in args_list[:-1]]) + "resume) VALUES(%s" + 10 * ",%s" + ");"
 
 select_cmd = "SELECT * FROM info"
 

@@ -47,15 +47,12 @@ async def submit(request):
     result = {
         "status": "success"
     }
-    try:
-        with request.json as info:
-            code = data.submit(info)
-            if code:
-                result["status"] = "fail"
-                result["error_code"] = code
-            return json(result)
-    except Exception:
-        return error_code(713)
+    info=request.json
+    code = data.submit(info)
+    if code:
+        result["status"] = "fail"
+        result["error_code"] = code
+    return json(result)
 
 
 @app.route("/api/signup/post", methods=["POST"])
