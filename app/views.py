@@ -68,8 +68,9 @@ async def get_info(request):
     result = data.get_info()
     return json({"list": result})
 
-@app.route("/api/signup/getresume/<name>", methods=["GET"])
-async def get_resume(request,name):
+@app.route("/api/signup/getresume", methods=["POST"])
+async def get_resume(request):
+    name=request.json['name']
     result = data.get_resume(name)
     return json({"result": result})
 
