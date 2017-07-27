@@ -8,6 +8,8 @@ insert_cmd = "INSERT INTO info(name,sex,college,major,grade,area,phone,email,tea
 
 select_cmd = "SELECT * FROM info"
 
+select_resume_cmd = "SELECT resume FROM info WHERE name=%s"
+
 args_list = [
     "name",
     "sex",
@@ -38,7 +40,7 @@ def submit(info):
         return check_flag
     with app.db.cursor() as cursor:
         cursor.execute(insert_cmd,
-                       tuple(map(lambda x: x if type(x) == int else "'" + x + "'", [info[x] for x in args_list])))
+                       tuple([info[x] for x in args_list]))
     app.db.commit()
     return 0
 
@@ -88,4 +90,18 @@ def get_info():
             tmp = cursor.fetchone()
     return result
 
-# def get_resume():
+
+def get_resume(name):
+    with app.db.cursor() as cursor:
+        cursor.execute(select_resume_cmd, name)
+        flag = cursor.fetchone()
+    if flag == 0:
+        return None
+    else:
+        if not os.path.exists(save_path):
+            return None
+        else:
+            for i in os.listdir(save_path):
+                if name in i:
+                    return i
+            return None

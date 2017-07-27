@@ -65,6 +65,11 @@ async def get_info(request):
     result = data.get_info()
     return json({"list": result})
 
+@app.route("/api/signup/getresume/<name>", methods=["GET"])
+async def get_resume(request,name):
+    result = data.get_resume(name)
+    return json({"result": result})
+
 @app.exception(ServerError)
 def error(request,exception):
     return json({"status":"fail","error_code":710})
