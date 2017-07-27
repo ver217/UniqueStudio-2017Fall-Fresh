@@ -1,3 +1,5 @@
 .idea
 __pycache
 app/__pycache
+*.log
+resume

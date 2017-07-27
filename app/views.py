@@ -7,13 +7,12 @@ import pymysql
 
 def db_setup():
     try:
-        with pymysql.connect(host='localhost',
+        connection= pymysql.connect(host='localhost',
                              user=mysql_config['user'],
                              password=mysql_config['password'],
                              db=mysql_config['db'],
-                             charset='utf8mb4',
-                             cursorclass=pymysql.cursors.DictCursor) as connection:
-            return connection
+                             charset='utf8mb4')
+        return connection
     except Exception:
         raise ServerError("Can't connect to MySQL Server!", status_code=500)
 
@@ -56,7 +55,7 @@ async def submit(request):
                 result["error_code"] = code
             return json(result)
     except Exception:
-        error_code(713)
+        return error_code(713)
 
 
 @app.route("/api/signup/post", methods=["POST"])
@@ -73,7 +72,7 @@ async def post(request):
                 result["error_code"] = code
             return json(result)
     except Exception:
-        error_code(713)
+        return error_code(713)
 
 
 @app.route("/api/signup/getinfo", methods=["GET"])
@@ -88,13 +87,13 @@ async def get_resume(request):
         with request.json['name'] as name:
             result = data.get_resume(name)
             if type(result) == int:
-                error_code(result)
+                return error_code(result)
             else:
                 return json({"result": result})
     except Exception:
-        error_code(713)
+        return error_code(713)
 
 
 @app.exception(SanicException)
 def error(request, exception):
-    error_code(710)
+    return error_code(710)
