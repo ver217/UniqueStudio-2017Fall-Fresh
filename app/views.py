@@ -1,7 +1,7 @@
-#-*- coding:utf-8 -*-
+# -*- coding:utf-8 -*-
 from app import data, app, mysql_config
 from sanic.response import json
-from sanic.exceptions import ServerError
+from sanic.exceptions import INTERNAL_SERVER_ERROR_HTML
 import pymysql
 
 
@@ -18,7 +18,7 @@ def db_setup():
 @app.listener('before_server_start')
 async def setup_db(app, loop):
     app.db = db_setup()
-    app.static('/api/signup/resume','./resume')
+    app.static('/api/signup/resume', './resume')
 
 
 @app.listener('after_server_start')
@@ -57,7 +57,7 @@ async def post(request):
     resume = request.files.get('resume').body
     ext = request.files.get('resume').name.split('.')[-1]
     name = request.form['name'][0]
-    code = data.save_resume(name,ext,resume)
+    code = data.save_resume(name, ext, resume)
     if code != 0:
         result["status"] = "fail"
         result["error_code"] = code
@@ -69,17 +69,19 @@ async def get_info(request):
     result = data.get_info()
     return json({"list": result})
 
+
 @app.route("/api/signup/getresume", methods=["POST"])
 async def get_resume(request):
-    name=request.json['name']
+    name = request.json['name']
     result = data.get_resume(name)
-    if result==-1:
+    if result == -1:
         return 715
-    elif result==-2:
+    elif result == -2:
         return 716
-    elif result!=None:
+    elif result != None:
         return json({"result": result})
 
-@app.exception(ServerError)
-def error(request,exception):
-    return json({"status":"fail","error_code":710})
+
+@app.exception(INTERNAL_SERVER_ERROR_HTML)
+def error(request, exception):
+    return json({"status": "fail", "error_code": 710})
