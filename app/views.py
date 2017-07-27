@@ -1,18 +1,25 @@
 # -*- coding:utf-8 -*-
 from app import data, app, mysql_config
 from sanic.response import json
-from sanic.exceptions import SanicException
+from sanic.exceptions import SanicException, ServerError
 import pymysql
 
 
 def db_setup():
-    connection = pymysql.connect(host='localhost',
-                                 user=mysql_config['user'],
-                                 password=mysql_config['password'],
-                                 db=mysql_config['db'],
-                                 charset='utf8mb4',
-                                 cursorclass=pymysql.cursors.DictCursor)
-    return connection
+    try:
+        with pymysql.connect(host='localhost',
+                             user=mysql_config['user'],
+                             password=mysql_config['password'],
+                             db=mysql_config['db'],
+                             charset='utf8mb4',
+                             cursorclass=pymysql.cursors.DictCursor) as connection:
+            return connection
+    except Exception:
+        raise ServerError("Can't connect to MySQL Server!", status_code=500)
+
+
+def error_code(code):
+    return json({"status": "fail", "error_code": code})
 
 
 @app.listener('before_server_start')
@@ -41,12 +48,15 @@ async def submit(request):
     result = {
         "status": "success"
     }
-    info = request.json
-    code = data.submit(info)
-    if code != 0:
-        result["status"] = "fail"
-        result["error_code"] = code
-    return json(result)
+    try:
+        with request.json as info:
+            code = data.submit(info)
+            if code:
+                result["status"] = "fail"
+                result["error_code"] = code
+            return json(result)
+    except Exception:
+        error_code(713)
 
 
 @app.route("/api/signup/post", methods=["POST"])
@@ -54,14 +64,16 @@ async def post(request):
     result = {
         "status": "success"
     }
-    resume = request.files.get('resume').body
-    ext = request.files.get('resume').name.split('.')[-1]
-    name = request.form['name'][0]
-    code = data.save_resume(name, ext, resume)
-    if code != 0:
-        result["status"] = "fail"
-        result["error_code"] = code
-    return json(result)
+    try:
+        with (request.files.get('resume'), request.form['name'][0]) as (resume, name):
+            ext = resume.name.split('.')[-1]
+            code = data.save_resume(name, ext, resume.body)
+            if code:
+                result["status"] = "fail"
+                result["error_code"] = code
+            return json(result)
+    except Exception:
+        error_code(713)
 
 
 @app.route("/api/signup/getinfo", methods=["GET"])
@@ -72,16 +84,17 @@ async def get_info(request):
 
 @app.route("/api/signup/getresume", methods=["POST"])
 async def get_resume(request):
-    name = request.json['name']
-    result = data.get_resume(name)
-    if result == -1:
-        return 715
-    elif result == -2:
-        return 716
-    elif result != None:
-        return json({"result": result})
+    try:
+        with request.json['name'] as name:
+            result = data.get_resume(name)
+            if type(result) == int:
+                error_code(result)
+            else:
+                return json({"result": result})
+    except Exception:
+        error_code(713)
 
 
 @app.exception(SanicException)
 def error(request, exception):
-    return json({"status": "fail", "error_code": 710})
+    error_code(710)

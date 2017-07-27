@@ -1,20 +1,13 @@
-#-*- coding:utf-8 -*-
+# -*- coding:utf-8 -*-
 import os
 import time
 from app import app
 
 save_path = os.getcwd() + "/resume"
 
-insert_cmd = "INSERT INTO info(name,sex,college,major,grade,area,phone,email,team,intro,resume) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);"
-
-select_cmd = "SELECT * FROM info"
-
-select_resume_cmd = "SELECT resume FROM info WHERE name=%s"
-
 args_list = [
     "name",
     "sex",
-    "college",
     "major",
     "grade",
     "area",
@@ -34,19 +27,26 @@ xss_list = [
     "]"
 ]
 
+insert_cmd = "INSERT INTO info(" + "".join(
+    map(lambda x: x + ',', args_list[:-1])) + "resume) VALUES(%s" + 10 * ",%s" + ");"
+
+select_cmd = "SELECT * FROM info"
+
+select_resume_cmd = "SELECT resume FROM info WHERE name=%s"
+
 
 def submit(info):
     check_flag = check_type(info)
-    if check_flag != 0:
+    if check_flag:
         return check_flag
     with app.db.cursor() as cursor:
         cursor.execute(insert_cmd,
                        tuple([info[x] for x in args_list]))
     app.db.commit()
-    return 0
+    return None
 
 
-def save_resume(name,ext,resume):
+def save_resume(name, ext, resume):
     if not os.path.exists(save_path):
         os.mkdir(save_path)
     if not resume:
@@ -54,7 +54,7 @@ def save_resume(name,ext,resume):
     filename = name + '_' + str(time.time()).replace('.', '_') + '.' + ext
     with open(os.path.join(save_path, filename), "wb") as file:
         file.write(resume)
-    return 0
+    return None
 
 
 def check_type(info):
@@ -71,7 +71,7 @@ def check_type(info):
             return 712
         elif not defend_xss(value):
             return 714
-    return 0
+    return None
 
 
 def defend_xss(cmd):
@@ -96,13 +96,13 @@ def get_resume(name):
     with app.db.cursor() as cursor:
         cursor.execute(select_resume_cmd, name)
         flag = cursor.fetchone()['resume']
-    if flag == 0:
+    if not flag:
         return None
     else:
         if not os.path.exists(save_path):
-            return -1
+            return 715
         else:
             for i in os.listdir(save_path):
                 if name in i:
-                    return os.path.join(save_path,i)
-            return -2
+                    return os.path.join(save_path, i)
+            return 716
