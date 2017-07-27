@@ -1,3 +1,4 @@
+#-*- coding:utf-8 -*-
 import os
 import time
 from app import app
@@ -45,13 +46,13 @@ def submit(info):
     return 0
 
 
-def save_resume(resume):
+def save_resume(name,ext,resume):
     if not os.path.exists(save_path):
         os.mkdir(save_path)
     if not resume:
         return 711
-    filename = resume.name + str(time.time()).replace('.', '_')
-    with open(os.path.join(save_path, filename), "w") as file:
+    filename = name + '_' + str(time.time()).replace('.', '_') + '.' + ext
+    with open(os.path.join(save_path, filename), "wb") as file:
         file.write(resume)
     return 0
 

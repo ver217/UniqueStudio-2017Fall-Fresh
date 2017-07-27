@@ -1,3 +1,4 @@
+#-*- coding:utf-8 -*-
 from app import data, app, mysql_config
 from sanic.response import json
 from sanic.exceptions import ServerError
@@ -52,8 +53,10 @@ async def post(request):
     result = {
         "status": "success"
     }
-    resume = request.files.get('resume')
-    code = data.save_resume(resume)
+    resume = request.files.get('resume').body
+    ext = request.files.get('resume').name.split('.')[-1]
+    name = request.form['name'][0]
+    code = data.save_resume(name,ext,resume)
     if code != 0:
         result["status"] = "fail"
         result["error_code"] = code
