@@ -95,14 +95,14 @@ def get_info():
 def get_resume(name):
     with app.db.cursor() as cursor:
         cursor.execute(select_resume_cmd, name)
-        flag = cursor.fetchone()
+        flag = cursor.fetchone()['resume']
     if flag == 0:
         return None
     else:
         if not os.path.exists(save_path):
-            return None
+            return -1
         else:
             for i in os.listdir(save_path):
                 if name in i:
-                    return i
-            return None
+                    return os.path.join(save_path,i)
+            return -2

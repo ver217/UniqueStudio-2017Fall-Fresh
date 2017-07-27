@@ -18,6 +18,7 @@ def db_setup():
 @app.listener('before_server_start')
 async def setup_db(app, loop):
     app.db = db_setup()
+    app.static('/api/signup/resume','./resume')
 
 
 @app.listener('after_server_start')
@@ -72,7 +73,12 @@ async def get_info(request):
 async def get_resume(request):
     name=request.json['name']
     result = data.get_resume(name)
-    return json({"result": result})
+    if result==-1:
+        return 715
+    elif result==-2:
+        return 716
+    elif result!=None:
+        return json({"result": result})
 
 @app.exception(ServerError)
 def error(request,exception):
