@@ -28,7 +28,7 @@ xss_list = [
 ]
 
 insert_cmd = "INSERT INTO info(" + "".join(
-    [x+',' for x in args_list[:-1]]) + "resume) VALUES(%s" + 10 * ",%s" + ");"
+    [x+',' for x in args_list[:-1]]) + "resume) VALUES(%s" + 9 * ",%s" + ");"
 
 select_cmd = "SELECT * FROM info"
 
@@ -65,7 +65,6 @@ def check_type(info):
         value = info[key]
         if key == "grade" or key == "resume":
             if type(value) != int:
-                print(key, value)
                 return 712
         elif type(value) != str:
             return 712
@@ -95,7 +94,7 @@ def get_info():
 def get_resume(name):
     with app.db.cursor() as cursor:
         cursor.execute(select_resume_cmd, name)
-        flag = cursor.fetchone()['resume']
+        flag = cursor.fetchone()[0]
     if not flag:
         return None
     else:

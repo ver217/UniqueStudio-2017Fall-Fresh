@@ -61,13 +61,13 @@ async def post(request):
         "status": "success"
     }
     try:
-        with (request.files.get('resume'), request.form['name'][0]) as (resume, name):
-            ext = resume.name.split('.')[-1]
-            code = data.save_resume(name, ext, resume.body)
-            if code:
-                result["status"] = "fail"
-                result["error_code"] = code
-            return json(result)
+        resume,name=request.files.get('resume'), request.form['name'][0]
+        ext = resume.name.split('.')[-1]
+        code = data.save_resume(name, ext, resume.body)
+        if code:
+            result["status"] = "fail"
+            result["error_code"] = code
+        return json(result)
     except Exception:
         return error_code(713)
 
@@ -81,13 +81,14 @@ async def get_info(request):
 @app.route("/api/signup/getresume", methods=["POST"])
 async def get_resume(request):
     try:
-        with request.json['name'] as name:
-            result = data.get_resume(name)
-            if type(result) == int:
-                return error_code(result)
-            else:
-                return json({"result": result})
-    except Exception:
+        name=request.json['name']
+        result = data.get_resume(name)
+        if type(result) == int:
+            return error_code(result)
+        else:
+            return json({"result": result})
+    except Exception as e:
+        print(e)
         return error_code(713)
 
 
