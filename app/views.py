@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
-import pymysql
+import pymysql,asyncio_redis
 from app import data, app, mysql_config,jinja
-from sanic.response import json
+from sanic.response import json,redirect
 from sanic.exceptions import SanicException, ServerError
 from sanic_session import RedisSessionInterface
 
@@ -12,7 +12,6 @@ admin={
 
 class Redis():
     _pool = None
-
     async def get_redis_pool(self):
         if not self._pool:
             self._pool = await asyncio_redis.Pool.create(
@@ -22,16 +21,16 @@ class Redis():
 
 redis=Redis()
 
-session_interface = RedisSessionInterface(redis.get_redis_pool())
+session_interface = RedisSessionInterface(redis.get_redis_pool)
 
 
 @app.middleware('request')
-async def session_init(request):
-    session_interface.open(request)
+async def add_session_to_request(request):
+    await session_interface.open(request)
 
 @app.middleware('response')
-async def session_save(request,response):
-    session_interface.save(request,response)
+async def save_session(request,response):
+    await session_interface.save(request,response)
 
 def db_setup():
     try:
@@ -70,25 +69,30 @@ async def close_db(app, loop):
     app.db.close()
 
 @app.route("/system/login",methods=["GET"])
-async def login(request):
-    if request['session']['Auth']==1:
-        return redirect(app.url_for(list))
-    else:
-        jinja.render('login.html',title='Login')
+async def login_html(request):
+    if not 'Auth' in request['session']:
+        request['session']['Auth']=0
+    elif request['session']['Auth']==1:
+        return redirect(app.url_for('info_list'))
+    return jinja.render('login.html',request,title='Login')
 
 @app.route("/system/login/post",methods=["POST"])
 async def login_post(request):
-    if request.form['id']==admin['id'] and request.form['pw']==admin['password']:
+    print(request.form)
+    if request.form['id'][0]==admin['id'] and request.form['pw'][0]==admin['password']:
         request['session']['Auth']=1
-        return redirect(app.url_for(list))
+        return redirect(app.url_for('info_list'))
+    else:
+        return redirect(app.url_for('login_html'))
 
 
 @app.route("/system/list",methods=["GET"])
-async def list(request):
-    if request['session']['Auth']!=1:
-        return redirect(app.url_for(login))
-    else:
-        jinja.render('list.html',infos=data.get_info(),title='List')
+async def info_list(request):
+    if not 'Auth' in request['session']:
+        request['session']['Auth']=0
+    elif request['session']['Auth']!=1:
+        return redirect(app.url_for('login_html'))
+    return jinja.render('list.html',request,info=data.get_info(),title='List')
 
 
 @app.route("/api/signup/submit", methods=["POST"])
@@ -141,6 +145,6 @@ async def get_resume(request):
         return error_code(713)
 
 
-@app.exception(SanicException)
-def error(request, exception):
-    return error_code(710)
+#@app.exception(SanicException)
+#def error(request, exception):
+#    return error_code(710)
