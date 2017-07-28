@@ -1,4 +1,6 @@
 function input_check() {
     return $('#password').val&&$('#id').val
 }
-$('.ui.accordion').accordion();
+function init() {
+    $('.ui.accordion').accordion();
+}
