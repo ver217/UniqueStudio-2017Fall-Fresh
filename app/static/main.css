@@ -13,5 +13,6 @@ body, html {
     margin: 0 auto;
 }
 #form>button{
-    text-align: center;
+    margin: 0 auto;
+    display: block; 
 }

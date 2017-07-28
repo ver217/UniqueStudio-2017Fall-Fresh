@@ -6,6 +6,8 @@ app = Sanic(__name__)
 
 jinja = SanicJinja2(app,pkg_name='app')
 
+app.static('/static', './app/static')
+
 mysql_config = {
     'user': 'root',
     'password': 'yyw19980424',
