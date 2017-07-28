@@ -1,5 +1,6 @@
 .idea
-__pycache
+__pycache__
 app/__pycache__
 *.log
 resume
+*.rdb
