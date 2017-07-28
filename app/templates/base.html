@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" type="text/css" href="../static/semantic.min.css">
+    <link rel="stylesheet" href="../static/main.css"/>
+    <script src="../static/jquery-3.1.1.min.js"></script>
+    <script src="../static/semantic.js"></script>
+    <script src="../static/main.js"></script>
     <meta charset="UTF-8">
     {% if title %}
     <title>{{ title }} - UniqueStudio</title>
@@ -9,6 +14,11 @@
     {% endif %}
 </head>
 <body>
+<div class="ui attached stackable menu">
+    <div class="logo">
+        <img class="ui small left floated " style="padding: 0.5em 1em" src="../static/src/logo.png"/>
+    </div>
+</div>
 {% block content %}
 {% endblock %}
 </body>
