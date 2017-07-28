@@ -10,6 +10,15 @@ admin = {
     'password': 'P@ssw0rd'
 }
 
+config = {
+    'host': '127.0.0.1',
+    'port': 3306,
+    'user': mysql_config['user'],
+    'password': mysql_config['password'],
+    'db': mysql_config['db'],
+    'charset': 'utf8mb4',
+    'cursorclass': pymysql.cursors.DictCursor,
+}
 
 class Redis():
     _pool = None
@@ -39,11 +48,7 @@ async def save_session(request, response):
 
 def db_setup():
     try:
-        connection = pymysql.connect(host='localhost',
-                                     user=mysql_config['user'],
-                                     password=mysql_config['password'],
-                                     db=mysql_config['db'],
-                                     charset='utf8mb4')
+        connection = pymysql.connect(**config)
         return connection
     except Exception:
         raise ServerError("Can't connect to MySQL Server!", status_code=500)
