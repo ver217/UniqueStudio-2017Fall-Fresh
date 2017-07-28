@@ -28,7 +28,7 @@ xss_list = [
 ]
 
 insert_cmd = "INSERT INTO info(" + "".join(
-    [x+',' for x in args_list[:-1]]) + "resume) VALUES(%s" + 9 * ",%s" + ");"
+    [x + ',' for x in args_list[:-1]]) + "resume) VALUES(%s" + 9 * ",%s" + ");"
 
 select_cmd = "SELECT * FROM info"
 
@@ -94,8 +94,10 @@ def get_info():
 def get_resume(name):
     with app.db.cursor() as cursor:
         cursor.execute(select_resume_cmd, name)
-        flag = cursor.fetchone()[0]
-    if not flag:
+        flag = cursor.fetchone()
+    if type(flag) != tuple:
+        return None
+    elif flag == 0:
         return None
     else:
         if not os.path.exists(save_path):

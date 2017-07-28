@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+<form action="/system/login/post" method="post">
+    <input type="text" name="id">
+    <input type="text" name="pw">
+    <input type="button" value="submit">
+</form>
+{% endblock %}
