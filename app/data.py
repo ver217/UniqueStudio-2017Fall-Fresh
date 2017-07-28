@@ -86,6 +86,9 @@ def get_info():
         cursor.execute(select_cmd)
         tmp = cursor.fetchone()
         while tmp:
+            print(tmp)
+            tmp=list(tmp)
+            tmp[-2]=tmp[-2].strftime("%Y/%m/%d - %H:%M:%S")
             result.append(tmp)
             tmp = cursor.fetchone()
     return result
