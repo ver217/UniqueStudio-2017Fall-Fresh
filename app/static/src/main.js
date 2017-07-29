@@ -11,7 +11,7 @@ function init() {
 }
 function judge(line,team) {
     var line_new=$(line),
-        line_team = line_new.children().get()[8];
+        line_team = line_new.children().get()[8].innerHTML;
     if(line_team===team){
 
     }else {
