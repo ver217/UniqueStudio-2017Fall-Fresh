@@ -3,4 +3,5 @@ function input_check() {
 }
 function init() {
     $('.ui.accordion').accordion();
+    $('table').tablesort();
 }
