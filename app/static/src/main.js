@@ -10,8 +10,8 @@ function init() {
     });
 }
 function judge(line,team) {
-    var line_team = line.children().get()[8],
-        line_new=$(line);
+    var line_new=$(line),
+        line_team = line_new.children().get()[8];
     if(line_team===team){
 
     }else {
