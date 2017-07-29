@@ -20,7 +20,7 @@ function judge(line,team) {
 }
 
 function pick_out(event) {
-    var lines=info_table.children('tbody').children('tr').get(),
+    var lines=$(info_table).children('tbody').children('tr').get(),
         team=event.data.team;
     lines.map(judge(team));
 }
