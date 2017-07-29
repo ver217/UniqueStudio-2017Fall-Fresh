@@ -9,7 +9,8 @@ function init() {
     });
 }
 function judge(line,team) {
-    var line_team = line.getElementsByName('td')[-4];
+    line=$(line);
+    var line_team = line.children().get()[8];
     if(line_team===team){
 
     }else {
@@ -18,7 +19,7 @@ function judge(line,team) {
 }
 var info_table=$('#info_table');
 function pick_out(event) {
-    var lines=info_table.children('tr').get(),
+    var lines=info_table.children('tbody').children('tr').get(),
         team=event.data.team;
     lines.map(judge(team));
 }
