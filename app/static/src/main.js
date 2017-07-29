@@ -10,12 +10,12 @@ function init() {
     });
 }
 function judge(line,team) {
-    line=$(line);
-    var line_team = line.children().get()[8];
+    var line_team = line.children().get()[8],
+        line_new=$(line);
     if(line_team===team){
 
     }else {
-        line.transiton('fly left');
+        line_new.transition('fly left');
     }
 }
 
