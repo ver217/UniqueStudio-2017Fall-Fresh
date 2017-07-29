@@ -79,18 +79,16 @@ def defend_xss(cmd):
             return False
     return True
 
+def time2str(element):
+    element['lasttime']=element['lasttime'].strftime("%Y/%m/%d - %H:%M:%S")
+    return element
 
 def get_info():
     result = []
     with app.db.cursor() as cursor:
         cursor.execute(select_cmd)
-        tmp = cursor.fetchone()
-        while tmp:
-            print(tmp)
-            tmp=list(tmp)
-            tmp[-2]=tmp[-2].strftime("%Y/%m/%d - %H:%M:%S")
-            result.append(tmp)
-            tmp = cursor.fetchone()
+        tmp = map(time2str,cursor.fetchall())
+        result=tmp
     return result
 
 
