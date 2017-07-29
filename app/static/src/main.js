@@ -12,10 +12,11 @@ function init() {
 function judge(line,team) {
     var line_new=$(line),
         line_team = line_new.children().get()[8].innerHTML;
+    if(line_new.hasClass("hidden")){
+        line_new.transition('fly left');
+    }
     if(line_team===team){
-        if(line_new.hasClass("hidden")){
-            line_new.transition('fly left');
-        }
+
     }else {
         line_new.transition('fly left');
     }
