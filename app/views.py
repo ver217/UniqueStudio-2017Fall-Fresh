@@ -59,8 +59,7 @@ def error_code(code):
 
 
 @app.listener('before_server_start')
-async def setup_db(app, loop):
-    app.db = db_setup()
+async def setup_static(app, loop):
     app.static('/api/signup/resume', './resume')
 
 
@@ -72,11 +71,6 @@ async def notify_server_started(app, loop):
 @app.listener('before_server_stop')
 async def notify_server_stopping(app, loop):
     print('Server shutting down... 0w0')
-
-
-@app.listener('after_server_stop')
-async def close_db(app, loop):
-    app.db.close()
 
 
 @app.route("/system/login", methods=["GET"])

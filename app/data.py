@@ -2,6 +2,7 @@
 import os
 import time
 from app import app
+from app.views import db_setup
 
 save_path = os.getcwd() + "/resume"
 
@@ -36,13 +37,17 @@ select_resume_cmd = "SELECT resume FROM info WHERE name=%s"
 
 
 def submit(info):
+    connection=db_setup()
     check_flag = check_type(info)
     if check_flag:
         return check_flag
-    with app.db.cursor() as cursor:
-        cursor.execute(insert_cmd,
-                       tuple([info[x] for x in args_list]))
-    app.db.commit()
+    try:
+        with connection.cursor() as cursor:
+            cursor.execute(insert_cmd,
+                           tuple([info[x] for x in args_list]))
+        connection.commit()
+    finally:
+        connection.close()
     return None
 
 
@@ -84,27 +89,35 @@ def time2str(element):
     return element
 
 def get_info():
-    result = []
-    with app.db.cursor() as cursor:
-        cursor.execute(select_cmd)
-        tmp = map(time2str,cursor.fetchall())
-        result=tmp
-    return result
+    connection = db_setup()
+    try:
+        with connection.cursor() as cursor:
+            cursor.execute(select_cmd)
+            tmp = map(time2str,cursor.fetchall())
+            result=tmp
+        return result
+    finally:
+        connection.close()
 
 
 def get_resume(name):
-    with app.db.cursor() as cursor:
-        cursor.execute(select_resume_cmd, name)
-        flag = cursor.fetchone()
-    if type(flag) != tuple:
-        return None
-    elif flag == 0:
-        return None
-    else:
-        if not os.path.exists(save_path):
-            return 715
+    connection = db_setup()
+    try:
+        with connection.cursor() as cursor:
+            cursor.execute(select_resume_cmd, name)
+            flag = cursor.fetchone()
+        if type(flag) != tuple:
+            return None
+        elif flag == 0:
+            return None
         else:
-            for i in os.listdir(save_path):
-                if name in i:
-                    return os.path.join(save_path, i)
-            return 716
+            if not os.path.exists(save_path):
+                return 715
+            else:
+                for i in os.listdir(save_path):
+                    if name in i:
+                        return os.path.join(save_path, i)
+                return 716
+    finally:
+        connection.close()
+
