@@ -1,9 +1,26 @@
 # -*- coding:utf-8 -*-
 import os
 import time
-from app.views import db_setup
+import pymysql
+from sanic.exceptions import ServerError
 
 save_path = os.getcwd() + "/resume"
+
+mysql_config = {
+    'user': 'root',
+    'password': 'yyw19980424',
+    'db': 'submit_info',
+}
+
+config = {
+    'host': '127.0.0.1',
+    'port': 3306,
+    'user': mysql_config['user'],
+    'password': mysql_config['password'],
+    'db': mysql_config['db'],
+    'charset': 'utf8mb4',
+    'cursorclass': pymysql.cursors.DictCursor,
+}
 
 args_list = [
     "name",
@@ -33,6 +50,13 @@ insert_cmd = "INSERT INTO info(" + "".join(
 select_cmd = "SELECT * FROM info"
 
 select_resume_cmd = "SELECT resume FROM info WHERE name=%s"
+
+
+def db_setup():
+    try:
+        return pymysql.connect(**config)
+    except Exception:
+        raise ServerError("Can't connect to MySQL Server!", status_code=500)
 
 
 def submit(info):

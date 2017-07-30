@@ -1,24 +1,13 @@
 # -*- coding:utf-8 -*-
 import pymysql, asyncio_redis
-from app import data, app, mysql_config, jinja, monkey_patch
+from app import data, app, jinja, monkey_patch
 from sanic.response import json, redirect
-from sanic.exceptions import SanicException, ServerError
 from sanic_session import RedisSessionInterface
 from typing import Callable
 
 admin = {
     'id': 'uniquestudio',
     'password': 'P@ssw0rd'
-}
-
-config = {
-    'host': '127.0.0.1',
-    'port': 3306,
-    'user': mysql_config['user'],
-    'password': mysql_config['password'],
-    'db': mysql_config['db'],
-    'charset': 'utf8mb4',
-    'cursorclass': pymysql.cursors.DictCursor,
 }
 
 
@@ -65,14 +54,6 @@ async def add_session_to_request(request):
 @app.middleware('response')
 async def save_session(request, response):
     await session_interface.save(request, response)
-
-
-def db_setup():
-    try:
-        connection = pymysql.connect(**config)
-        return connection
-    except Exception:
-        raise ServerError("Can't connect to MySQL Server!", status_code=500)
 
 
 def error_code(code):

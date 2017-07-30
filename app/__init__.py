@@ -6,9 +6,3 @@ from app import views
 app = Sanic(__name__)
 
 jinja = SanicJinja2(app, pkg_name='app')
-
-mysql_config = {
-    'user': 'root',
-    'password': 'yyw19980424',
-    'db': 'submit_info',
-}
