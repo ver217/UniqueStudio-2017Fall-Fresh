@@ -1,5 +1,5 @@
 # -*- coding:utf-8 -*-
-import pymysql, asyncio_redis
+import asyncio_redis
 from app import data, app, jinja, monkey_patch
 from sanic.response import json, redirect
 from sanic_session import RedisSessionInterface
@@ -61,19 +61,19 @@ def error_code(code):
 
 
 @app.listener('before_server_start')
-async def setup_static():
+async def setup_static(app, loop):
     app.static(app, '/static', './app/static')
     app.static = monkey_patch.static
     app.static(app, '/api/signup/resume', './resume')
 
 
 @app.listener('after_server_start')
-async def notify_server_started():
+async def notify_server_started(app, loop):
     print('Server successfully started! 0w0')
 
 
 @app.listener('before_server_stop')
-async def notify_server_stopping():
+async def notify_server_stopping(app, loop):
     print('Server shutting down... 0w0')
 
 
@@ -136,7 +136,7 @@ async def post(request):
 
 
 @app.route("/api/signup/getinfo", methods=["GET"])
-async def get_info():
+async def get_info(request):
     result = data.get_info()
     return json({"list": result})
 

@@ -1,20 +1,4 @@
 # -*- coding:utf-8 -*-
-from mimetypes import guess_type
-from os import path
-from re import sub
-from time import strftime, gmtime
-from urllib.parse import unquote
-from sanic.response import redirect
-from aiofiles.os import stat
-
-from sanic.exceptions import (
-    ContentRangeError,
-    FileNotFound,
-    HeaderNotFound,
-    InvalidUsage,
-)
-from sanic.handlers import ContentRangeHandler
-from sanic.response import file, file_stream, HTTPResponse
 
 """
 This file is a monkey patch for sanic.static
