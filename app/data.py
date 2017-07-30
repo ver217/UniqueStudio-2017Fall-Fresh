@@ -37,7 +37,7 @@ select_resume_cmd = "SELECT resume FROM info WHERE name=%s"
 
 
 def submit(info):
-    connection=db_setup()
+    connection = db_setup()
     check_flag = check_type(info)
     if check_flag:
         return check_flag
@@ -84,17 +84,19 @@ def defend_xss(cmd):
             return False
     return True
 
+
 def time2str(element):
-    element['lasttime']=element['lasttime'].strftime("%Y/%m/%d - %H:%M:%S")
+    element['lasttime'] = element['lasttime'].strftime("%Y/%m/%d - %H:%M:%S")
     return element
+
 
 def get_info():
     connection = db_setup()
     try:
         with connection.cursor() as cursor:
             cursor.execute(select_cmd)
-            tmp = map(time2str,cursor.fetchall())
-            result=tmp
+            tmp = map(time2str, cursor.fetchall())
+            result = tmp
         return result
     finally:
         connection.close()
@@ -106,18 +108,18 @@ def get_resume(name):
         with connection.cursor() as cursor:
             cursor.execute(select_resume_cmd, name)
             flag = cursor.fetchone()
-        if type(flag) != tuple:
-            return None
-        elif flag == 0:
+        if not flag:
             return None
         else:
             if not os.path.exists(save_path):
                 return 715
             else:
+                result = []
                 for i in os.listdir(save_path):
                     if name in i:
-                        return os.path.join(save_path, i)
+                        result.append(i)
+                if len(result):
+                    return result
                 return 716
     finally:
         connection.close()
-
