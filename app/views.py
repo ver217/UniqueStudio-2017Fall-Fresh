@@ -4,6 +4,7 @@ from app import data, app, mysql_config, jinja
 from sanic.response import json, redirect
 from sanic.exceptions import SanicException, ServerError
 from sanic_session import RedisSessionInterface
+from typing import Callable
 
 admin = {
     'id': 'uniquestudio',
@@ -20,7 +21,8 @@ config = {
     'cursorclass': pymysql.cursors.DictCursor,
 }
 
-class Redis():
+
+class Redis:
     _pool = None
 
     async def get_redis_pool(self):
@@ -31,9 +33,28 @@ class Redis():
         return self._pool
 
 
+def new_init(
+        self, redis_getter: Callable,
+        domain: str = None, expiry: int = 600,
+        httponly: bool = True, cookie_name: str = 'session',
+        prefix: str = 'session:'):
+    self.redis_getter = redis_getter
+    self.expiry = expiry
+    self.prefix = prefix
+    self.cookie_name = cookie_name
+    self.domain = domain
+    self.httponly = httponly
+
+
+class NewRedisSessionInterface(RedisSessionInterface):
+    pass
+
+
+NewRedisSessionInterface.__init__ = new_init
+
 redis = Redis()
 
-session_interface = RedisSessionInterface(redis.get_redis_pool)
+session_interface = NewRedisSessionInterface(redis.get_redis_pool)
 
 
 @app.middleware('request')
@@ -59,23 +80,23 @@ def error_code(code):
 
 
 @app.listener('before_server_start')
-async def setup_static(app, loop):
+async def setup_static():
     app.static('/api/signup/resume', './resume')
 
 
 @app.listener('after_server_start')
-async def notify_server_started(app, loop):
+async def notify_server_started():
     print('Server successfully started! 0w0')
 
 
 @app.listener('before_server_stop')
-async def notify_server_stopping(app, loop):
+async def notify_server_stopping():
     print('Server shutting down... 0w0')
 
 
 @app.route("/system/login", methods=["GET"])
 async def login_html(request):
-    if not 'Auth' in request['session']:
+    if 'Auth' not in request['session']:
         request['session']['Auth'] = 0
     elif request['session']['Auth'] == 1:
         return redirect(app.url_for('info_list'))
@@ -93,7 +114,7 @@ async def login_post(request):
 
 @app.route("/system/list", methods=["GET"])
 async def info_list(request):
-    if not 'Auth' in request['session']:
+    if 'Auth' not in request['session']:
         request['session']['Auth'] = 0
     elif request['session']['Auth'] == 1:
         result = data.get_info()
@@ -127,12 +148,12 @@ async def post(request):
             result["status"] = "fail"
             result["error_code"] = code
         return json(result)
-    except Exception:
+    except ValueError:
         return error_code(713)
 
 
 @app.route("/api/signup/getinfo", methods=["GET"])
-async def get_info(request):
+async def get_info():
     result = data.get_info()
     return json({"list": result})
 
