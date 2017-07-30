@@ -1,0 +1,389 @@
+2017-07-29 15:08:38 - (sanic)[DEBUG]: 
+                 ▄▄▄▄▄
+        ▀▀▀██████▄▄▄       _______________
+      ▄▄▄▄▄  █████████▄  /                 \
+     ▀▀▀▀█████▌ ▀▐▄ ▀▐█ |   Gotta go fast!  |
+   ▀▀█████▄▄ ▀██████▄██ | _________________/
+   ▀▄▄▄▄▄  ▀▀█▄▀█════█▀ |/
+        ▀▀▀▄  ▀▀███ ▀       ▄▄
+     ▄███▀▀██▄████████▄ ▄▀▀▀▀▀▀█▌
+   ██▀▄▄▄██▀▄███▀ ▀▀████      ▄██
+▄▀▀▀▄██▄▀▀▌████▒▒▒▒▒▒███     ▌▄▄▀
+▌    ▐▀████▐███▒▒▒▒▒▐██▌
+▀▄▄▄▄▀   ▀▀████▒▒▒▒▄██▀
+          ▀▀█████████▀
+        ▄▄██▀██████▀█
+      ▄██▀     ▀▀▀  █
+     ▄█             ▐▌
+ ▄▄▄▄█▌              ▀█▄▄▄▄▀▀▄
+▌     ▐                ▀▀▄▄▄▀
+ ▀▀▄▄▀
+
+2017-07-29 15:08:38 - (sanic)[INFO]: Goin' Fast @ http://0.0.0.0:8000
+2017-07-29 15:08:38 - (sanic)[INFO]: Starting worker [27875]
+2017-07-29 15:08:38 - (sanic)[INFO]: Starting worker [27876]
+2017-07-29 15:08:38 - (sanic)[INFO]: Starting worker [27874]
+2017-07-29 15:08:38 - (sanic)[INFO]: Starting worker [27877]
+2017-07-29 15:09:09 - (network)[INFO][211.69.194.219:17399]: GET http://139.59.98.31:8000/system/list  200 14736
+2017-07-29 15:09:10 - (network)[INFO][211.69.194.219:35340]: GET http://139.59.98.31:8000/static/src/main.css  200 209
+2017-07-29 15:09:10 - (network)[INFO][211.69.194.219:4327]: GET http://139.59.98.31:8000/static/src/semantic/semantic.min.css  200 593530
+2017-07-29 15:09:10 - (network)[INFO][211.69.194.219:13162]: GET http://139.59.98.31:8000/static/src/semantic/accordion.min.css  200 6869
+2017-07-29 15:09:10 - (network)[INFO][211.69.194.219:24372]: GET http://139.59.98.31:8000/static/src/jquery-3.1.1.min.js  200 86709
+2017-07-29 15:09:10 - (network)[INFO][211.69.194.219:57641]: GET http://139.59.98.31:8000/static/src/semantic/semantic.js  200 744002
+2017-07-29 15:09:10 - (network)[INFO][211.69.194.219:17399]: GET http://139.59.98.31:8000/static/src/semantic/accordion.js  200 19990
+2017-07-29 15:09:10 - (network)[INFO][211.69.194.219:35340]: GET http://139.59.98.31:8000/static/src/semantic/tablesort.js  200 4811
+2017-07-29 15:09:10 - (network)[INFO][211.69.194.219:13162]: GET http://139.59.98.31:8000/static/src/main.js  200 825
+2017-07-29 15:09:12 - (network)[INFO][211.69.194.219:4327]: GET http://139.59.98.31:8000/static/src/logo.png  200 6757
+2017-07-29 15:09:13 - (network)[INFO][211.69.194.219:57641]: GET http://139.59.98.31:8000/static/src/semantic/assets/fonts/icons.woff2  200 77160
+2017-07-29 15:09:17 - (network)[INFO][218.199.87.242:40606]: HEAD http://139.59.98.31:8000/static/src/logo.png  200 0
+2017-07-29 15:10:10 - (sanic)[ERROR]: NoneType
+
+2017-07-29 15:10:10 - (network)[INFO][]: NoneNone  408 22
+2017-07-29 15:10:10 - (sanic)[ERROR]: NoneType
+
+2017-07-29 15:10:10 - (network)[INFO][]: NoneNone  408 22
+2017-07-29 15:10:10 - (sanic)[ERROR]: NoneType
+
+2017-07-29 15:10:10 - (network)[INFO][]: NoneNone  408 22
+2017-07-29 15:10:10 - (sanic)[ERROR]: NoneType
+
+2017-07-29 15:10:10 - (network)[INFO][]: NoneNone  408 22
+2017-07-29 15:10:12 - (sanic)[ERROR]: NoneType
+
+2017-07-29 15:10:12 - (network)[INFO][]: NoneNone  408 22
+2017-07-29 15:10:13 - (sanic)[ERROR]: NoneType
+
+2017-07-29 15:10:13 - (network)[INFO][]: NoneNone  408 22
+2017-07-29 15:11:34 - (network)[INFO][211.69.194.219:26773]: GET http://139.59.98.31:8000/system/list  200 14736
+2017-07-29 15:11:34 - (network)[INFO][113.57.183.53:17725]: GET http://139.59.98.31:8000/system/list  302 0
+2017-07-29 15:11:34 - (network)[INFO][14.152.68.134:57292]: GET http://139.59.98.31:8000/system/list  302 0
+2017-07-29 15:11:34 - (network)[INFO][211.69.194.219:34490]: GET http://139.59.98.31:8000/static/src/main.js  304 0
+2017-07-29 15:11:34 - (network)[INFO][14.152.68.134:57292]: GET http://139.59.98.31:8000/system/login  200 1406
+2017-07-29 15:11:34 - (network)[INFO][14.152.68.134:57292]: GET http://139.59.98.31:8000/static/src/semantic/semantic.min.css  200 593530
+2017-07-29 15:11:34 - (network)[INFO][14.152.68.134:57519]: GET http://139.59.98.31:8000/static/src/semantic/accordion.min.css  200 6869
+2017-07-29 15:11:34 - (network)[INFO][14.152.68.134:57517]: GET http://139.59.98.31:8000/static/src/logo.png  200 6757
+2017-07-29 15:11:34 - (network)[INFO][14.152.68.134:57515]: GET http://139.59.98.31:8000/static/src/main.css  200 209
+2017-07-29 15:11:34 - (network)[INFO][14.152.68.134:57521]: GET http://139.59.98.31:8000/static/src/semantic/accordion.js  200 19990
+2017-07-29 15:11:34 - (network)[INFO][14.152.68.134:57518]: GET http://139.59.98.31:8000/static/src/semantic/semantic.js  200 744002
+2017-07-29 15:11:34 - (network)[INFO][14.152.68.134:57516]: GET http://139.59.98.31:8000/static/src/main.js  200 825
+2017-07-29 15:11:35 - (network)[INFO][113.57.183.53:17725]: GET http://139.59.98.31:8000/system/login  200 1406
+2017-07-29 15:11:35 - (network)[INFO][113.57.183.53:17725]: GET http://139.59.98.31:8000/static/src/semantic/semantic.min.css  200 593530
+2017-07-29 15:11:35 - (network)[INFO][113.57.183.53:17724]: GET http://139.59.98.31:8000/static/src/main.css  200 209
+2017-07-29 15:11:35 - (network)[INFO][113.57.183.53:17726]: GET http://139.59.98.31:8000/static/src/semantic/accordion.min.css  200 6869
+2017-07-29 15:11:35 - (network)[INFO][113.57.183.53:17727]: GET http://139.59.98.31:8000/static/src/jquery-3.1.1.min.js  200 86709
+2017-07-29 15:11:35 - (network)[INFO][113.57.183.53:17724]: GET http://139.59.98.31:8000/static/src/semantic/semantic.js  200 744002
+2017-07-29 15:11:35 - (network)[INFO][113.57.183.53:17728]: GET http://139.59.98.31:8000/static/src/semantic/accordion.js  200 19990
+2017-07-29 15:11:35 - (network)[INFO][113.57.183.53:17729]: GET http://139.59.98.31:8000/static/src/semantic/tablesort.js  200 4811
+2017-07-29 15:11:35 - (network)[INFO][14.152.68.134:57514]: GET http://139.59.98.31:8000/static/src/semantic/tablesort.js  200 4811
+2017-07-29 15:11:35 - (network)[INFO][14.152.68.134:57520]: GET http://139.59.98.31:8000/static/src/jquery-3.1.1.min.js  200 86709
+2017-07-29 15:11:36 - (network)[INFO][113.57.183.53:17726]: GET http://139.59.98.31:8000/static/src/main.js  200 825
+2017-07-29 15:11:44 - (network)[INFO][113.57.183.53:17725]: GET http://139.59.98.31:8000/static/src/logo.png  304 0
+2017-07-29 15:11:48 - (sanic)[ERROR]: Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/sanic/app.py", line 461, in handle_request
+    handler, args, kwargs, uri = self.router.get(request)
+  File "/usr/local/lib/python3.5/dist-packages/sanic/router.py", line 290, in get
+    return self._get(request.path, request.method, '')
+  File "/usr/local/lib/python3.5/dist-packages/sanic/router.py", line 339, in _get
+    raise NotFound('Requested URL {} not found'.format(url))
+sanic.exceptions.NotFound: Requested URL /favicon.ico not found
+
+2017-07-29 15:11:48 - (network)[INFO][14.152.68.139:22403]: GET http://139.59.98.31:8000/favicon.ico  404 43
+2017-07-29 15:12:04 - (network)[INFO][113.57.183.53:17730]: POST http://139.59.98.31:8000/system/login/post  302 0
+2017-07-29 15:12:05 - (network)[INFO][113.57.183.53:17730]: GET http://139.59.98.31:8000/system/list  200 14736
+2017-07-29 15:12:05 - (network)[INFO][113.57.183.53:17731]: GET http://139.59.98.31:8000/static/src/semantic/semantic.js  200 744002
+2017-07-29 15:12:14 - (network)[INFO][113.57.183.53:17731]: GET http://139.59.98.31:8000/static/src/semantic/assets/fonts/icons.woff  200 98024
+2017-07-29 15:12:17 - (sanic)[ERROR]: Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/sanic/app.py", line 461, in handle_request
+    handler, args, kwargs, uri = self.router.get(request)
+  File "/usr/local/lib/python3.5/dist-packages/sanic/router.py", line 290, in get
+    return self._get(request.path, request.method, '')
+  File "/usr/local/lib/python3.5/dist-packages/sanic/router.py", line 339, in _get
+    raise NotFound('Requested URL {} not found'.format(url))
+sanic.exceptions.NotFound: Requested URL /favicon.ico not found
+
+2017-07-29 15:12:17 - (network)[INFO][113.57.183.53:17731]: GET http://139.59.98.31:8000/favicon.ico  404 43
+2017-07-29 15:12:34 - (sanic)[ERROR]: NoneType
+
+2017-07-29 15:12:34 - (network)[INFO][]: NoneNone  408 22
+2017-07-29 15:12:34 - (sanic)[ERROR]: NoneType
+
+2017-07-29 15:12:34 - (network)[INFO][]: NoneNone  408 22
+2017-07-29 15:12:34 - (sanic)[ERROR]: NoneType
+
+2017-07-29 15:12:34 - (network)[INFO][]: NoneNone  408 22
+2017-07-29 15:12:34 - (sanic)[ERROR]: NoneType
+
+2017-07-29 15:12:34 - (network)[INFO][]: NoneNone  408 22
+2017-07-29 15:12:34 - (sanic)[ERROR]: NoneType
+
+2017-07-29 15:12:34 - (network)[INFO][]: NoneNone  408 22
+2017-07-29 15:12:34 - (sanic)[ERROR]: NoneType
+
+2017-07-29 15:12:34 - (network)[INFO][]: NoneNone  408 22
+2017-07-29 15:12:35 - (sanic)[ERROR]: NoneType
+
+2017-07-29 15:12:35 - (network)[INFO][]: NoneNone  408 22
+2017-07-29 15:12:35 - (sanic)[ERROR]: NoneType
+
+2017-07-29 15:12:35 - (network)[INFO][]: NoneNone  408 22
+2017-07-29 15:12:35 - (sanic)[ERROR]: NoneType
+
+2017-07-29 15:12:35 - (network)[INFO][]: NoneNone  408 22
+2017-07-29 15:12:35 - (sanic)[ERROR]: NoneType
+
+2017-07-29 15:12:35 - (network)[INFO][]: NoneNone  408 22
+2017-07-29 15:12:35 - (sanic)[ERROR]: NoneType
+
+2017-07-29 15:12:35 - (network)[INFO][]: NoneNone  408 22
+2017-07-29 15:12:35 - (sanic)[ERROR]: NoneType
+
+2017-07-29 15:12:35 - (network)[INFO][]: NoneNone  408 22
+2017-07-29 15:12:35 - (sanic)[ERROR]: NoneType
+
+2017-07-29 15:12:35 - (network)[INFO][]: NoneNone  408 22
+2017-07-29 15:12:36 - (sanic)[ERROR]: NoneType
+
+2017-07-29 15:12:36 - (network)[INFO][]: NoneNone  408 22
+2017-07-29 15:12:45 - (sanic)[ERROR]: NoneType
+
+2017-07-29 15:12:45 - (network)[INFO][]: NoneNone  408 22
+2017-07-29 15:12:48 - (sanic)[ERROR]: NoneType
+
+2017-07-29 15:12:48 - (network)[INFO][]: NoneNone  408 22
+2017-07-29 15:13:04 - (sanic)[ERROR]: NoneType
+
+2017-07-29 15:13:04 - (network)[INFO][]: NoneNone  408 22
+2017-07-29 15:13:17 - (sanic)[ERROR]: NoneType
+
+2017-07-29 15:13:17 - (network)[INFO][]: NoneNone  408 22
+2017-07-29 15:14:17 - (network)[INFO][222.20.30.36:53619]: GET http://139.59.98.31:8000/system/list  302 0
+2017-07-29 15:14:17 - (network)[INFO][222.20.30.36:53619]: GET http://139.59.98.31:8000/system/login  200 1406
+2017-07-29 15:14:17 - (network)[INFO][222.20.30.36:53619]: GET http://139.59.98.31:8000/static/src/semantic/semantic.min.css  200 593530
+2017-07-29 15:14:17 - (network)[INFO][222.20.30.36:53620]: GET http://139.59.98.31:8000/static/src/main.css  200 209
+2017-07-29 15:14:17 - (network)[INFO][222.20.30.36:53621]: GET http://139.59.98.31:8000/static/src/semantic/accordion.min.css  200 6869
+2017-07-29 15:14:17 - (network)[INFO][222.20.30.36:53622]: GET http://139.59.98.31:8000/static/src/jquery-3.1.1.min.js  200 86709
+2017-07-29 15:14:18 - (network)[INFO][222.20.30.36:53620]: GET http://139.59.98.31:8000/static/src/semantic/semantic.js  200 744002
+2017-07-29 15:14:18 - (network)[INFO][222.20.30.36:53621]: GET http://139.59.98.31:8000/static/src/semantic/accordion.js  200 19990
+2017-07-29 15:14:18 - (network)[INFO][222.20.30.36:53622]: GET http://139.59.98.31:8000/static/src/semantic/tablesort.js  200 4811
+2017-07-29 15:14:18 - (network)[INFO][222.20.30.36:53622]: GET http://139.59.98.31:8000/static/src/main.js  200 825
+2017-07-29 15:14:19 - (network)[INFO][222.20.30.36:53622]: GET http://139.59.98.31:8000/static/src/logo.png  200 6757
+2017-07-29 15:14:52 - (network)[INFO][222.20.30.36:53620]: POST http://139.59.98.31:8000/system/login/post  302 0
+2017-07-29 15:14:52 - (network)[INFO][222.20.30.36:53620]: GET http://139.59.98.31:8000/system/list  200 14736
+2017-07-29 15:14:53 - (network)[INFO][222.20.30.36:53620]: GET http://139.59.98.31:8000/static/src/semantic/assets/fonts/icons.woff2  200 77160
+2017-07-29 15:29:19 - (sanic)[ERROR]: Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/sanic/server.py", line 151, in data_received
+    self.parser.feed_data(data)
+  File "httptools/parser/parser.pyx", line 171, in httptools.parser.parser.HttpParser.feed_data (httptools/parser/parser.c:2721)
+httptools.parser.errors.HttpParserInvalidMethodError: invalid HTTP method
+
+2017-07-29 15:29:19 - (network)[INFO][]: NoneNone  400 18
+2017-07-29 15:33:49 - (network)[INFO][122.205.7.193:46135]: GET http://139.59.98.31:8000/system/list  302 0
+2017-07-29 15:33:49 - (network)[INFO][122.205.7.193:46135]: GET http://139.59.98.31:8000/system/login  200 1406
+2017-07-29 15:33:49 - (network)[INFO][122.205.7.193:46135]: GET http://139.59.98.31:8000/static/src/semantic/semantic.min.css  200 593530
+2017-07-29 15:33:49 - (network)[INFO][122.205.7.193:31838]: GET http://139.59.98.31:8000/static/src/main.css  200 209
+2017-07-29 15:33:49 - (network)[INFO][122.205.7.193:36419]: GET http://139.59.98.31:8000/static/src/semantic/accordion.min.css  200 6869
+2017-07-29 15:33:49 - (network)[INFO][122.205.7.193:12081]: GET http://139.59.98.31:8000/static/src/semantic/accordion.js  200 19990
+2017-07-29 15:33:49 - (network)[INFO][122.205.7.193:48866]: GET http://139.59.98.31:8000/static/src/jquery-3.1.1.min.js  200 86709
+2017-07-29 15:33:49 - (network)[INFO][122.205.7.193:48020]: GET http://139.59.98.31:8000/static/src/semantic/semantic.js  200 744002
+2017-07-29 15:33:50 - (network)[INFO][122.205.7.193:31838]: GET http://139.59.98.31:8000/static/src/semantic/tablesort.js  200 4811
+2017-07-29 15:33:50 - (network)[INFO][122.205.7.193:36419]: GET http://139.59.98.31:8000/static/src/main.js  200 825
+2017-07-29 15:33:51 - (network)[INFO][122.205.7.193:46135]: GET http://139.59.98.31:8000/static/src/logo.png  200 6757
+2017-07-29 15:34:20 - (network)[INFO][122.205.7.193:48020]: POST http://139.59.98.31:8000/system/login/post  302 0
+2017-07-29 15:34:20 - (network)[INFO][122.205.7.193:48020]: GET http://139.59.98.31:8000/system/list  200 14736
+2017-07-29 15:34:21 - (network)[INFO][122.205.7.193:48020]: GET http://139.59.98.31:8000/static/src/semantic/assets/fonts/icons.woff2  200 77160
+2017-07-29 15:34:49 - (sanic)[ERROR]: NoneType
+
+2017-07-29 15:34:49 - (network)[INFO][]: NoneNone  408 22
+2017-07-29 15:34:49 - (sanic)[ERROR]: NoneType
+
+2017-07-29 15:34:49 - (network)[INFO][]: NoneNone  408 22
+2017-07-29 15:34:49 - (sanic)[ERROR]: NoneType
+
+2017-07-29 15:34:49 - (network)[INFO][]: NoneNone  408 22
+2017-07-29 15:34:50 - (sanic)[ERROR]: NoneType
+
+2017-07-29 15:34:50 - (network)[INFO][]: NoneNone  408 22
+2017-07-29 15:34:51 - (sanic)[ERROR]: NoneType
+
+2017-07-29 15:34:51 - (network)[INFO][]: NoneNone  408 22
+2017-07-29 15:35:22 - (sanic)[ERROR]: NoneType
+
+2017-07-29 15:35:22 - (network)[INFO][]: NoneNone  408 22
+2017-07-29 15:46:19 - (sanic)[ERROR]: Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/sanic/server.py", line 151, in data_received
+    self.parser.feed_data(data)
+  File "httptools/parser/parser.pyx", line 171, in httptools.parser.parser.HttpParser.feed_data (httptools/parser/parser.c:2721)
+httptools.parser.errors.HttpParserInvalidMethodError: invalid HTTP method
+
+2017-07-29 15:46:19 - (network)[INFO][]: NoneNone  400 18
+2017-07-29 16:30:17 - (network)[INFO][211.69.194.219:41813]: GET http://139.59.98.31:8000/system/list  200 14736
+2017-07-29 16:30:17 - (network)[INFO][211.69.194.219:15375]: GET http://139.59.98.31:8000/static/src/jquery-3.1.1.min.js  304 0
+2017-07-29 16:30:17 - (network)[INFO][211.69.194.219:14291]: GET http://139.59.98.31:8000/static/src/main.css  304 0
+2017-07-29 16:30:17 - (network)[INFO][211.69.194.219:8727]: GET http://139.59.98.31:8000/static/src/semantic/accordion.min.css  304 0
+2017-07-29 16:30:17 - (network)[INFO][211.69.194.219:14065]: GET http://139.59.98.31:8000/static/src/semantic/semantic.min.css  304 0
+2017-07-29 16:30:17 - (network)[INFO][211.69.194.219:25075]: GET http://139.59.98.31:8000/static/src/semantic/semantic.js  304 0
+2017-07-29 16:30:17 - (network)[INFO][211.69.194.219:41813]: GET http://139.59.98.31:8000/static/src/semantic/accordion.js  304 0
+2017-07-29 16:30:17 - (network)[INFO][211.69.194.219:15375]: GET http://139.59.98.31:8000/static/src/semantic/tablesort.js  304 0
+2017-07-29 16:30:17 - (network)[INFO][211.69.194.219:25075]: GET http://139.59.98.31:8000/static/src/main.js  304 0
+2017-07-29 16:30:18 - (network)[INFO][211.69.194.219:25075]: GET http://139.59.98.31:8000/static/src/semantic/assets/fonts/icons.woff2  304 0
+2017-07-29 16:31:18 - (sanic)[ERROR]: NoneType
+
+2017-07-29 16:31:18 - (network)[INFO][]: NoneNone  408 22
+2017-07-29 16:31:18 - (sanic)[ERROR]: NoneType
+
+2017-07-29 16:31:18 - (network)[INFO][]: NoneNone  408 22
+2017-07-29 16:31:18 - (sanic)[ERROR]: NoneType
+
+2017-07-29 16:31:18 - (network)[INFO][]: NoneNone  408 22
+2017-07-29 16:31:18 - (sanic)[ERROR]: NoneType
+
+2017-07-29 16:31:18 - (network)[INFO][]: NoneNone  408 22
+2017-07-29 16:31:18 - (sanic)[ERROR]: NoneType
+
+2017-07-29 16:31:18 - (network)[INFO][]: NoneNone  408 22
+2017-07-29 16:31:19 - (sanic)[ERROR]: NoneType
+
+2017-07-29 16:31:19 - (network)[INFO][]: NoneNone  408 22
+2017-07-29 19:03:45 - (sanic)[ERROR]: Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/sanic/server.py", line 151, in data_received
+    self.parser.feed_data(data)
+  File "httptools/parser/parser.pyx", line 171, in httptools.parser.parser.HttpParser.feed_data (httptools/parser/parser.c:2721)
+httptools.parser.errors.HttpParserInvalidMethodError: invalid HTTP method
+
+2017-07-29 19:03:45 - (network)[INFO][]: NoneNone  400 18
+2017-07-29 23:56:59 - (sanic)[ERROR]: Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/sanic/app.py", line 461, in handle_request
+    handler, args, kwargs, uri = self.router.get(request)
+  File "/usr/local/lib/python3.5/dist-packages/sanic/router.py", line 290, in get
+    return self._get(request.path, request.method, '')
+  File "/usr/local/lib/python3.5/dist-packages/sanic/router.py", line 339, in _get
+    raise NotFound('Requested URL {} not found'.format(url))
+sanic.exceptions.NotFound: Requested URL / not found
+
+2017-07-29 23:56:59 - (network)[INFO][139.162.79.87:43812]: GET http://139.59.98.31:8000/  404 32
+2017-07-30 06:28:23 - (sanic)[ERROR]: Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/sanic/server.py", line 151, in data_received
+    self.parser.feed_data(data)
+  File "httptools/parser/parser.pyx", line 171, in httptools.parser.parser.HttpParser.feed_data (httptools/parser/parser.c:2721)
+httptools.parser.errors.HttpParserInvalidMethodError: invalid HTTP method
+
+2017-07-30 06:28:23 - (network)[INFO][]: NoneNone  400 18
+2017-07-30 06:35:51 - (network)[INFO][171.113.100.76:1811]: GET http://139.59.98.31:8000/system/login  302 0
+2017-07-30 06:35:51 - (sanic)[ERROR]: Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/pymysql/connections.py", line 914, in _write_bytes
+    self.socket.sendall(data)
+BrokenPipeError: [Errno 32] Broken pipe
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/sanic/app.py", line 471, in handle_request
+    response = await response
+  File "/root/US-fall-backend/app/views.py", line 105, in info_list
+    result = data.get_info()
+  File "/root/US-fall-backend/app/data.py", line 89, in get_info
+    cursor.execute(select_cmd)
+  File "/usr/local/lib/python3.5/dist-packages/pymysql/cursors.py", line 134, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.5/dist-packages/pymysql/cursors.py", line 282, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.5/dist-packages/pymysql/connections.py", line 767, in query
+    self._execute_command(COMMAND.COM_QUERY, sql)
+  File "/usr/local/lib/python3.5/dist-packages/pymysql/connections.py", line 957, in _execute_command
+    self._write_bytes(prelude + sql[:chunk_size-1])
+  File "/usr/local/lib/python3.5/dist-packages/pymysql/connections.py", line 916, in _write_bytes
+    raise err.OperationalError(2006, "MySQL server has gone away (%r)" % (e,))
+pymysql.err.OperationalError: (2006, "MySQL server has gone away (BrokenPipeError(32, 'Broken pipe'))")
+
+2017-07-30 06:35:51 - (network)[INFO][171.113.100.76:1811]: GET http://139.59.98.31:8000/system/list  500 144
+2017-07-30 06:35:52 - (sanic)[ERROR]: Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/sanic/app.py", line 461, in handle_request
+    handler, args, kwargs, uri = self.router.get(request)
+  File "/usr/local/lib/python3.5/dist-packages/sanic/router.py", line 290, in get
+    return self._get(request.path, request.method, '')
+  File "/usr/local/lib/python3.5/dist-packages/sanic/router.py", line 339, in _get
+    raise NotFound('Requested URL {} not found'.format(url))
+sanic.exceptions.NotFound: Requested URL /favicon.ico not found
+
+2017-07-30 06:35:52 - (network)[INFO][171.113.100.76:1811]: GET http://139.59.98.31:8000/favicon.ico  404 43
+2017-07-30 06:35:56 - (sanic)[ERROR]: Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/pymysql/connections.py", line 914, in _write_bytes
+    self.socket.sendall(data)
+BrokenPipeError: [Errno 32] Broken pipe
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/sanic/app.py", line 471, in handle_request
+    response = await response
+  File "/root/US-fall-backend/app/views.py", line 105, in info_list
+    result = data.get_info()
+  File "/root/US-fall-backend/app/data.py", line 89, in get_info
+    cursor.execute(select_cmd)
+  File "/usr/local/lib/python3.5/dist-packages/pymysql/cursors.py", line 134, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.5/dist-packages/pymysql/cursors.py", line 282, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.5/dist-packages/pymysql/connections.py", line 767, in query
+    self._execute_command(COMMAND.COM_QUERY, sql)
+  File "/usr/local/lib/python3.5/dist-packages/pymysql/connections.py", line 957, in _execute_command
+    self._write_bytes(prelude + sql[:chunk_size-1])
+  File "/usr/local/lib/python3.5/dist-packages/pymysql/connections.py", line 916, in _write_bytes
+    raise err.OperationalError(2006, "MySQL server has gone away (%r)" % (e,))
+pymysql.err.OperationalError: (2006, "MySQL server has gone away (BrokenPipeError(32, 'Broken pipe'))")
+
+2017-07-30 06:35:56 - (network)[INFO][171.113.100.76:1811]: GET http://139.59.98.31:8000/system/list  500 144
+2017-07-30 06:36:06 - (network)[INFO][171.113.100.76:1811]: GET http://139.59.98.31:8000/system/login  302 0
+2017-07-30 06:36:06 - (sanic)[ERROR]: Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/pymysql/connections.py", line 914, in _write_bytes
+    self.socket.sendall(data)
+BrokenPipeError: [Errno 32] Broken pipe
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/sanic/app.py", line 471, in handle_request
+    response = await response
+  File "/root/US-fall-backend/app/views.py", line 105, in info_list
+    result = data.get_info()
+  File "/root/US-fall-backend/app/data.py", line 89, in get_info
+    cursor.execute(select_cmd)
+  File "/usr/local/lib/python3.5/dist-packages/pymysql/cursors.py", line 134, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.5/dist-packages/pymysql/cursors.py", line 282, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.5/dist-packages/pymysql/connections.py", line 767, in query
+    self._execute_command(COMMAND.COM_QUERY, sql)
+  File "/usr/local/lib/python3.5/dist-packages/pymysql/connections.py", line 957, in _execute_command
+    self._write_bytes(prelude + sql[:chunk_size-1])
+  File "/usr/local/lib/python3.5/dist-packages/pymysql/connections.py", line 916, in _write_bytes
+    raise err.OperationalError(2006, "MySQL server has gone away (%r)" % (e,))
+pymysql.err.OperationalError: (2006, "MySQL server has gone away (BrokenPipeError(32, 'Broken pipe'))")
+
+2017-07-30 06:36:06 - (network)[INFO][171.113.100.76:1811]: GET http://139.59.98.31:8000/system/list  500 144
+2017-07-30 06:37:06 - (sanic)[ERROR]: NoneType
+
+2017-07-30 06:37:06 - (network)[INFO][]: NoneNone  408 22
+2017-07-30 06:37:06 - (sanic)[ERROR]: NoneType
+
+2017-07-30 06:37:06 - (network)[INFO][]: NoneNone  408 22
+2017-07-30 06:37:06 - (sanic)[ERROR]: NoneType
+
+2017-07-30 06:37:06 - (network)[INFO][]: NoneNone  408 22
+2017-07-30 06:37:06 - (sanic)[ERROR]: NoneType
+
+2017-07-30 06:37:06 - (network)[INFO][]: NoneNone  408 22
+2017-07-30 09:26:19 - (sanic)[INFO]: Received signal SIGTERM. Shutting down.
+2017-07-30 09:26:19 - (sanic)[INFO]: Stopping worker [27874]
+2017-07-30 09:26:19 - (sanic)[INFO]: Stopping worker [27877]
+2017-07-30 09:26:19 - (sanic)[INFO]: Stopping worker [27875]
+Server successfully started! 0w0
+Server shutting down... 0w0
+Server successfully started! 0w0
+Server shutting down... 0w0
+Server successfully started! 0w0
+Server shutting down... 0w0
+2017-07-30 09:26:19 - (sanic)[INFO]: Stopping worker [27876]
+Server successfully started! 0w0
+Server shutting down... 0w0
+2017-07-30 09:26:19 - (sanic)[INFO]: Server Stopped

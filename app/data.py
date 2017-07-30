@@ -96,15 +96,18 @@ def get_resume(name):
     with app.db.cursor() as cursor:
         cursor.execute(select_resume_cmd, name)
         flag = cursor.fetchone()
-    if type(flag) != tuple:
-        return None
-    elif flag == 0:
+        print(flag)
+    if not flag:
         return None
     else:
         if not os.path.exists(save_path):
             return 715
         else:
+            result=[]
             for i in os.listdir(save_path):
                 if name in i:
-                    return os.path.join(save_path, i)
-            return 716
+                    result.append(i)
+            if len(result):
+                return result
+            else:
+                return 716
