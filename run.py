@@ -1,9 +1,4 @@
 # -*- coding:utf-8 -*-
-import sanic
-from sanic import Sanic
-from app import monkey_patch
-
-sanic.static.register = monkey_patch.register
 from app import app
 
 if __name__ == '__main__':

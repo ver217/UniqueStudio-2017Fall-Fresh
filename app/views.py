@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 import pymysql, asyncio_redis
-from app import data, app, mysql_config, jinja
+from app import data, app, mysql_config, jinja, monkey_patch
 from sanic.response import json, redirect
 from sanic.exceptions import SanicException, ServerError
 from sanic_session import RedisSessionInterface
@@ -81,7 +81,9 @@ def error_code(code):
 
 @app.listener('before_server_start')
 async def setup_static():
-    app.static('/api/signup/resume', './resume')
+    app.static(app, '/static', './app/static')
+    app.static = monkey_patch.static
+    app.static(app, '/api/signup/resume', './resume')
 
 
 @app.listener('after_server_start')

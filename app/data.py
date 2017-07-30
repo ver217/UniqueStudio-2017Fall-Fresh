@@ -1,7 +1,6 @@
 # -*- coding:utf-8 -*-
 import os
 import time
-from app import app
 from app.views import db_setup
 
 save_path = os.getcwd() + "/resume"

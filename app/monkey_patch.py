@@ -1,4 +1,21 @@
 # -*- coding:utf-8 -*-
+from mimetypes import guess_type
+from os import path
+from re import sub
+from time import strftime, gmtime
+from urllib.parse import unquote
+from sanic.response import redirect
+from aiofiles.os import stat
+
+from sanic.exceptions import (
+    ContentRangeError,
+    FileNotFound,
+    HeaderNotFound,
+    InvalidUsage,
+)
+from sanic.handlers import ContentRangeHandler
+from sanic.response import file, file_stream, HTTPResponse
+
 """
 This file is a monkey patch for sanic.static
 which add a func to check the session of the request to some static files
@@ -6,6 +23,17 @@ and decide whether it can reach the static file or not.
 
 you can edit the check_auth func below
 """
+
+
+def static(self, uri, file_or_directory, pattern=r'/?.+',
+           use_modified_since=True, use_content_range=False,
+           stream_large_files=False):
+    """Register a root to serve files from. The input can either be a
+    file or a directory. See
+    """
+    register(self, uri, file_or_directory, pattern,
+             use_modified_since, use_content_range,
+             stream_large_files)
 
 
 def check_auth(request):
