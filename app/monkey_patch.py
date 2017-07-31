@@ -14,7 +14,7 @@ from sanic.exceptions import (
     InvalidUsage,
 )
 from sanic.handlers import ContentRangeHandler
-from sanic.response import file, file_stream, HTTPResponse
+from sanic.response import file, file_stream, HTTPResponse, redirect
 
 """
 This file is a monkey patch for sanic.static

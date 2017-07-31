@@ -2,25 +2,27 @@
 import os
 import time
 import pymysql
+import aiomysql
 from sanic.exceptions import ServerError
-
-save_path = os.getcwd() + "/resume"
+from sanic_mysql import SanicMysql
+from app import app
 
 mysql_config = {
+    'host': '127.0.0.1',
+    'port': 3306,
     'user': 'root',
     'password': 'yyw19980424',
     'db': 'submit_info',
+    'charset': 'utf8mb4',
+    'cursorclass': aiomysql.DictCursor,
+    'autocommit':True
 }
 
-config = {
-    'host': '127.0.0.1',
-    'port': 3306,
-    'user': mysql_config['user'],
-    'password': mysql_config['password'],
-    'db': mysql_config['db'],
-    'charset': 'utf8mb4',
-    'cursorclass': pymysql.cursors.DictCursor,
-}
+app.config.update(dict(MYSQL=mysql_config))
+
+SanicMysql(app)
+
+save_path = os.getcwd() + "/resume"
 
 args_list = [
     "name",
@@ -52,26 +54,16 @@ select_cmd = "SELECT * FROM info"
 select_resume_cmd = "SELECT resume FROM info WHERE name=%s"
 
 
-def db_setup():
-    try:
-        return pymysql.connect(**config)
-    except Exception:
-        raise ServerError("Can't connect to MySQL Server!", status_code=500)
-
-
-def submit(info):
-    connection = db_setup()
+async def submit(info):
     check_flag = check_type(info)
     if check_flag:
         return check_flag
     try:
-        with connection.cursor() as cursor:
-            cursor.execute(insert_cmd,
-                           tuple([info[x] for x in args_list]))
-        connection.commit()
-    finally:
-        connection.close()
-    return None
+        result = await app.mysql.query(insert_cmd, tuple([info[x] for x in args_list]))
+    except Exception as e:
+        print(e)
+        return None
+    return result
 
 
 def save_resume(name, ext, resume):
@@ -113,24 +105,15 @@ def time2str(element):
     return element
 
 
-def get_info():
-    connection = db_setup()
-    try:
-        with connection.cursor() as cursor:
-            cursor.execute(select_cmd)
-            tmp = map(time2str, cursor.fetchall())
-            result = tmp
-        return result
-    finally:
-        connection.close()
+async def get_info():
+    val =await app.mysql.query(select_cmd)
+    result = map(time2str, val)
+    return result 
 
 
-def get_resume(name):
-    connection = db_setup()
+async def get_resume(name):
     try:
-        with connection.cursor() as cursor:
-            cursor.execute(select_resume_cmd, name)
-            flag = cursor.fetchone()
+        flag = await app.mysql.query(select_resume_cmd, name)
         if not flag:
             return None
         else:
@@ -144,5 +127,7 @@ def get_resume(name):
                 if len(result):
                     return result
                 return 716
-    finally:
-        connection.close()
+    except Exception as e:
+        print(e)
+        return 710
+

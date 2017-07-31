@@ -10,7 +10,6 @@ admin = {
     'password': 'P@ssw0rd'
 }
 
-
 class Redis:
     _pool = None
 
@@ -62,7 +61,7 @@ def error_code(code):
 
 @app.listener('before_server_start')
 async def setup_static(app, loop):
-    app.static(app, '/static', './app/static')
+    app.static( '/static', './app/static')
     app.static = monkey_patch.static
     app.static(app, '/api/signup/resume', './resume')
 
@@ -100,7 +99,7 @@ async def info_list(request):
     if 'Auth' not in request['session']:
         request['session']['Auth'] = 0
     elif request['session']['Auth'] == 1:
-        result = data.get_info()
+        result = await data.get_info()
         return jinja.render('list.html', request, info=result, title='List')
     return redirect(app.url_for('login_html'))
 
@@ -111,7 +110,7 @@ async def submit(request):
         "status": "success"
     }
     info = request.json
-    code = data.submit(info)
+    code = await data.submit(info)
     if code:
         result["status"] = "fail"
         result["error_code"] = code
@@ -126,7 +125,7 @@ async def post(request):
     try:
         resume, name = request.files.get('resume'), request.form['name'][0]
         ext = resume.name.split('.')[-1]
-        code = data.save_resume(name, ext, resume.body)
+        code = await data.save_resume(name, ext, resume.body)
         if code:
             result["status"] = "fail"
             result["error_code"] = code
@@ -137,7 +136,7 @@ async def post(request):
 
 @app.route("/api/signup/getinfo", methods=["GET"])
 async def get_info(request):
-    result = data.get_info()
+    result = await data.get_info()
     return json({"list": result})
 
 
@@ -145,7 +144,7 @@ async def get_info(request):
 async def get_resume(request):
     try:
         name = request.json['name']
-        result = data.get_resume(name)
+        result = await data.get_resume(name)
         if type(result) == int:
             return error_code(result)
         else:
@@ -157,3 +156,4 @@ async def get_resume(request):
 # @app.exception(SanicException)
 # def error(request, exception):
 #    return error_code(710)
+
