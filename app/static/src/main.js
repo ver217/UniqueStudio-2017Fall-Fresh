@@ -9,6 +9,7 @@ function init() {
         $(element).bind("click",{team:element.innerHTML},pick_out);
     });
 }
+
 function judge(line,team) {
     var line_new=$(line),
         line_team = line_new.children().get()[8].innerHTML;

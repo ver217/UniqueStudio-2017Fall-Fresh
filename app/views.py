@@ -10,7 +10,6 @@ admin = {
     'password': 'P@ssw0rd'
 }
 
-
 class Redis:
     _pool = None
 
@@ -62,7 +61,7 @@ def error_code(code):
 
 @app.listener('before_server_start')
 async def setup_static(app, loop):
-    app.static(app, '/static', './app/static')
+    app.static('/static', './app/static')
     app.static = monkey_patch.static
     app.static(app, '/api/signup/resume', './resume')
 
