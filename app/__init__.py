@@ -6,4 +6,3 @@ app = Sanic(__name__)
 
 jinja = SanicJinja2(app, pkg_name='app')
 from app import views,data
-

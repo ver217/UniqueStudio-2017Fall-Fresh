@@ -61,7 +61,7 @@ def error_code(code):
 
 @app.listener('before_server_start')
 async def setup_static(app, loop):
-    app.static( '/static', './app/static')
+    app.static('/static', './app/static')
     app.static = monkey_patch.static
     app.static(app, '/api/signup/resume', './resume')
 
@@ -142,15 +142,14 @@ async def get_info(request):
     return json({"list": result})
 
 
-@app.route("/api/signup/getresume", methods=["POST"])
-async def get_resume(request):
+@app.route("/api/signup/getresume/<name>", methods=["GET"])
+async def get_resume(request,name):
     try:
-        name = request.json['name']
         result = await data.get_resume(name)
         if type(result) == int:
             return error_code(result)
         else:
-            return json({"result": result})
+            return redirect('/api/signup/resume/'+'result')
     except Exception as e:
         print(e)
         return error_code(713)
