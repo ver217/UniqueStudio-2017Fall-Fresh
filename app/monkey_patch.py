@@ -25,6 +25,7 @@ you can edit the check_auth func below
 """
 
 
+
 def static(self, uri, file_or_directory, pattern=r'/?.+',
            use_modified_since=True, use_content_range=False,
            stream_large_files=False):

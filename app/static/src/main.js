@@ -16,7 +16,7 @@ function judge(line,team) {
     if(line_new.hasClass("hidden")){
         line_new.transition('toggle');
     }
-    if(line_team===team){
+    if(team=='All'||line_team===team){
 
     }else {
         line_new.transition('toggle');

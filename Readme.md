@@ -1,11 +1,22 @@
 # UniqueStudio-2017-fall-h5-backend
 
+
+Setup command
 ``` shell
-pip install -U sanic-gunicorn
-gunicorn --bind 0.0.0.0:8000 --worker-class sanic.worker.GunicornWorker run:app
+pip install -r requirement.txt
+gunicorn -w 12 --bind 0.0.0.0:8000 --worker-class sanic.worker.GunicornWorker run:app
 
 ```
 
+
+Custom core.py for sanic_mysql
+```Python
+_mysql = await create_pool(**_k, maxsize = 100)
+```
+
+
+
+MySQL Command
 ``` MySQL
 
 CREATE SCHEMA `submit_info` DEFAULT CHARACTER SET utf8 ;

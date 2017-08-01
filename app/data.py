@@ -15,7 +15,7 @@ mysql_config = {
     'db': 'submit_info',
     'charset': 'utf8mb4',
     'cursorclass': aiomysql.DictCursor,
-    'autocommit':True
+    'autocommit': True
 }
 
 app.config.update(dict(MYSQL=mysql_config))

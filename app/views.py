@@ -11,6 +11,7 @@ admin = {
     'password': 'P@ssw0rd'
 }
 
+
 class Redis:
     _pool = None
 
@@ -145,13 +146,13 @@ async def get_info(request):
 
 
 @app.route("/api/signup/getresume/<name>", methods=["GET"])
-async def get_resume(request,name):
+async def get_resume(request, name):
     try:
         result = await data.get_resume(urllib.parse.unquote(name))
         if type(result) == int:
             return error_code(result)
         else:
-            return redirect('/api/signup/resume/'+result[0])
+            return redirect('/api/signup/resume/' + result[0])
     except Exception as e:
         print(e)
         return error_code(713)
@@ -159,4 +160,3 @@ async def get_resume(request,name):
 # @app.exception(SanicException)
 # def error(request, exception):
 #    return error_code(710)
-
