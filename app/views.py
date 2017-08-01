@@ -4,6 +4,7 @@ from app import data, app, jinja, monkey_patch
 from sanic.response import json, redirect
 from sanic_session import RedisSessionInterface
 from typing import Callable
+import urllib
 
 admin = {
     'id': 'uniquestudio',
@@ -100,6 +101,7 @@ async def info_list(request):
         request['session']['Auth'] = 0
     elif request['session']['Auth'] == 1:
         result = await data.get_info()
+        print(result)
         return jinja.render('list.html', request, info=result, title='List')
     return redirect(app.url_for('login_html'))
 
@@ -145,11 +147,11 @@ async def get_info(request):
 @app.route("/api/signup/getresume/<name>", methods=["GET"])
 async def get_resume(request,name):
     try:
-        result = await data.get_resume(name)
+        result = await data.get_resume(urllib.parse.unquote(name))
         if type(result) == int:
             return error_code(result)
         else:
-            return redirect('/api/signup/resume/'+'result')
+            return redirect('/api/signup/resume/'+result[0])
     except Exception as e:
         print(e)
         return error_code(713)

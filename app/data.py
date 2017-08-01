@@ -106,13 +106,9 @@ def time2str(element):
 
 
 async def get_info():
-    try:
-        val = await app.mysql.query(select_cmd)
-        tmp = map(time2str, val)
-        return tmp
-    except Exception as e:
-        print(e)
-        return 710
+    val = await app.mysql.query(select_cmd)
+    tmp = map(time2str, val)
+    return tmp
 
 
 async def get_resume(name):
