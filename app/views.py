@@ -123,9 +123,11 @@ async def post(request):
         "status": "success"
     }
     try:
+        print(request)
+        print(request.form)
         resume, name = request.files.get('resume'), request.form['name'][0]
         ext = resume.name.split('.')[-1]
-        code = await data.save_resume(name, ext, resume.body)
+        code = data.save_resume(name, ext, resume.body)
         if code:
             result["status"] = "fail"
             result["error_code"] = code
