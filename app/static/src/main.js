@@ -14,12 +14,12 @@ function judge(line,team) {
     var line_new=$(line),
         line_team = line_new.children().get()[8].innerHTML;
     if(line_new.hasClass("hidden")){
-        line_new.transition('fly left');
+        line_new.transition('toggle');
     }
     if(line_team===team){
 
     }else {
-        line_new.transition('fly left');
+        line_new.transition('toggle');
     }
 }
 

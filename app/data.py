@@ -13,6 +13,9 @@ mysql_config = {
     'user': 'root',
     'password': 'yyw19980424',
     'db': 'submit_info',
+    'charset': 'utf8mb4',
+    'cursorclass': aiomysql.DictCursor,
+    'autocommit':True
 }
 
 app.config.update(dict(MYSQL=mysql_config))
@@ -20,16 +23,6 @@ app.config.update(dict(MYSQL=mysql_config))
 SanicMysql(app)
 
 save_path = os.getcwd() + "/resume"
-
-config = {
-    'host': '127.0.0.1',
-    'port': 3306,
-    'user': mysql_config['user'],
-    'password': mysql_config['password'],
-    'db': mysql_config['db'],
-    'charset': 'utf8mb4',
-    'cursorclass': aiomysql.DictCursor,
-}
 
 args_list = [
     "name",
