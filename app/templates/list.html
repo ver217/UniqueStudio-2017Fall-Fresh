@@ -15,34 +15,34 @@
 <table id="info_table" class="ui celled table striped selectable sortable">
     <thead>
     <tr>
-        <th class="collapsing no-sort">序号</th>
-        <th class="collapsing no-sort">姓名</th>
-        <th class="collapsing">性别</th>
-        <th class="collapsing">院系专业</th>
-        <th class="collapsing">年级</th>
-        <th class="collapsing">所在校区</th>
-        <th class="collapsing no-sort">电话号码</th>
-        <th class="collapsing no-sort">电子邮箱</th>
-        <th class="collapsing">组别</th>
+        <th class="center aligned collapsing no-sort">序号</th>
+        <th class="center aligned collapsing no-sort">姓名</th>
+        <th class="center aligned collapsing">性别</th>
+        <th class="center aligned collapsing">院系专业</th>
+        <th class="center aligned collapsing">年级</th>
+        <th class="center aligned collapsing">校区</th>
+        <th class="center aligned collapsing no-sort">电话号码</th>
+        <th class="center aligned collapsing no-sort">电子邮箱</th>
+        <th class="center aligned collapsing">组别</th>
         <th class="three wide no-sort">个人简介</th>
-        <th class="collapsing">简历</th>
-        <th class="two wide">报名时间</th>
+        <th class="center aligned collapsing">简历</th>
+        <th class="center aligned two wide">报名时间</th>
     </tr>
     </thead>
     <tbody>
     {% for i in info %}
     <tr>
-        <td>{{i['id']}}</td>
-        <td>{{i['name']}}</td>
-        <td>{{i['sex']}}</td>
-        <td>{{i['major']}}</td>
-        <td>{{i['grade']}}</td>
-        <td>{{i['area']}}</td>
-        <td>{{i['phone']}}</td>
-        <td>{{i['email']}}</td>
-        <td>{{i['team']}}</td>
+        <td class="center aligned">{{i['id']}}</td>
+        <td class="center aligned">{{i['name']}}</td>
+        <td class="center aligned">{{i['sex']}}</td>
+        <td class="center aligned">{{i['major']}}</td>
+        <td class="center aligned">{{i['grade']}}</td>
+        <td class="center aligned">{{i['area']}}</td>
+        <td class="center aligned">{{i['phone']}}</td>
+        <td class="center aligned">{{i['email']}}</td>
+        <td class="center aligned">{{i['team']}}</td>
 
-        <td>
+        <td >
             <div class="ui accordion">
                 <div class="title"><i class="dropdown icon"></i> 详细信息</div>
                 <div class="content">
@@ -51,11 +51,11 @@
             </div>
         </td>
         {% if i['resume']==0 %}
-        <td class="negative"><i class="icon close"></i>无</td>
+        <td class="negative center aligned"><i class="icon close"></i>无</td>
         {% else %}
-        <td class="positive"><i class="icon checkmark"></i><a href="/api/signup/getresume/{{i['name']}}">有</a></td>
+        <td class="positive center aligned"><i class="icon checkmark"></i><a href="/api/signup/getresume/{{i['name']}}">有</a></td>
         {% endif %}
-        <td>{{i['lasttime']}}</td>
+        <td class="center aligned">{{i['lasttime']}}</td>
     </tr>
     {% endfor %}
 
