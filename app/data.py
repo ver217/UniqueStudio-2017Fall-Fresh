@@ -11,7 +11,7 @@ mysql_config = {
     'host': '127.0.0.1',
     'port': 3306,
     'user': 'root',
-    'password': 'yyw19980424',
+    'password': 'uniquestudio',
     'db': 'submit_info',
     'charset': 'utf8mb4',
     'cursorclass': aiomysql.DictCursor,
