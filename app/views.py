@@ -77,6 +77,9 @@ async def notify_server_started(app, loop):
 async def notify_server_stopping(app, loop):
     print('Server shutting down... 0w0')
 
+@app.route("/",methods=["GET"])
+async def index(request):
+    return jinja.render('index.html',request)
 
 @app.route("/system/login", methods=["GET"])
 async def login_html(request):
