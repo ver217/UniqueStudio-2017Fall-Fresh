@@ -3,6 +3,7 @@ import asyncio_redis
 from app import data, app, jinja, monkey_patch
 from sanic.response import json, redirect
 from sanic_session import RedisSessionInterface
+from sanic_cors import CORS, cross_origin
 from typing import Callable
 import urllib
 
@@ -77,7 +78,7 @@ async def notify_server_started(app, loop):
 async def notify_server_stopping(app, loop):
     print('Server shutting down... 0w0')
 
-@app.route("/",methods=["GET"])
+@app.route("/",methods=["GET","OPTIONS"])
 async def index(request):
     return jinja.render('index.html',request)
 
@@ -110,7 +111,7 @@ async def info_list(request):
     return redirect(app.url_for('login_html'))
 
 
-@app.route("/api/signup/submit", methods=["POST"])
+@app.route("/api/signup/submit", methods=["POST","OPTIONS"])
 async def submit(request):
     result = {
         "status": "success"
@@ -123,7 +124,7 @@ async def submit(request):
     return json(result)
 
 
-@app.route("/api/signup/post", methods=["POST"])
+@app.route("/api/signup/post", methods=["POST","OPTIONS"])
 async def post(request):
     result = {
         "status": "success"
@@ -142,13 +143,13 @@ async def post(request):
         return error_code(713)
 
 
-@app.route("/api/signup/getinfo", methods=["GET"])
+@app.route("/api/signup/getinfo", methods=["GET","OPTIONS"])
 async def get_info(request):
     result = await data.get_info()
     return json({"list": result})
 
 
-@app.route("/api/signup/getresume/<name>", methods=["GET"])
+@app.route("/api/signup/getresume/<name>", methods=["GET","OPTIONS"])
 async def get_resume(request, name):
     try:
         result = await data.get_resume(urllib.parse.unquote(name))
