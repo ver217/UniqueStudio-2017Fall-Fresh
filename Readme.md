@@ -1,21 +1,18 @@
 # UniqueStudio-2017-fall-h5-backend
 
 
-Setup command
+## Todo
+add counter and SQL command from backend.
+
+## Setup command
+
+1. Install Redis-Server
+
+2. Clone it and install dependency
 ``` shell
 pip install -r requirement.txt
-gunicorn -w 12 --bind 0.0.0.0:8000 --worker-class sanic.worker.GunicornWorker run:app
-
 ```
-
-
-Custom core.py for sanic_mysql
-```Python
-_mysql = await create_pool(**_k, maxsize = 100)
-```
-
-
-
+3. Deploy MySQL
 MySQL Command
 ``` MySQL
 
@@ -36,6 +33,20 @@ CREATE TABLE `info` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+```
+
+4. At last start it
+``` shell
+gunicorn -w 12 --bind 0.0.0.0:8000 --worker-class sanic.worker.GunicornWorker run:app
+```
+
+~~Custom core.py for sanic_mysql~~
+
+~~_mysql = await create_pool(**_k, maxsize = 100)~~
+
+
+
+
 
 
 ```
