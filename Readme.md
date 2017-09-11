@@ -8,12 +8,11 @@ add counter and SQL command from backend.
 
 1. Install Redis-Server
 
-2. Clone it and install dependency
+2. Clone it and install dependencies
 ``` shell
 pip install -r requirement.txt
 ```
 3. Deploy MySQL
-MySQL Command
 ``` MySQL
 
 CREATE SCHEMA `submit_info` DEFAULT CHARACTER SET utf8 ;
@@ -40,6 +39,7 @@ CREATE TABLE `info` (
 gunicorn -w 12 --bind 0.0.0.0:8000 --worker-class sanic.worker.GunicornWorker run:app
 ```
 
+### Abandoned:
 ~~Custom core.py for sanic_mysql~~
 
 ~~_mysql = await create_pool(**_k, maxsize = 100)~~
