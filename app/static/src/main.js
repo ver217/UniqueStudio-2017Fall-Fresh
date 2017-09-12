@@ -29,4 +29,12 @@ function pick_out(event) {
     lines.forEach(function (element) {
         judge(element,team)
     });
+    sum_counter();
+}
+
+function sum_counter(){
+    var a=document.querySelector("tbody"),
+        sum=0;
+    sum=a.querySelectorAll("tr").length-a.querySelectorAll("tr.hidden").length;
+    $(sum_counter).html("总计:"+sum);
 }
