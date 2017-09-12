@@ -1,6 +1,7 @@
 # -*- coding:utf-8 -*-
 import os
 import time
+import urllib.parse
 import pymysql
 import aiomysql
 from sanic.exceptions import ServerError
@@ -59,7 +60,7 @@ async def submit(info):
     if check_flag:
         return check_flag
     try:
-        result = await app.mysql.query(insert_cmd, tuple([info[x] for x in args_list]))
+        result = await app.mysql.query(insert_cmd, tuple([urllib.parse.quote(info[x]) for x in args_list]))
     except Exception as e:
         print(e)
         return None
@@ -88,8 +89,8 @@ def check_type(info):
                 return 712
         elif type(value) != str:
             return 712
-        elif not defend_xss(value):
-            return 714
+        #elif not defend_xss(value):
+        #    return 714
     return None
 
 
