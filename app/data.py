@@ -60,7 +60,7 @@ async def submit(info):
     if check_flag:
         return check_flag
     try:
-        result = await app.mysql.query(insert_cmd, tuple([urllib.parse.quote(info[x]) for x in args_list]))
+        result = await app.mysql.query(insert_cmd, tuple([change_xss(x, info[x]) for x in args_list]))
     except Exception as e:
         print(e)
         return None
@@ -93,6 +93,12 @@ def check_type(info):
         #    return 714
     return None
 
+
+def change_xss(key, value):
+    if key == "grade" or key == "resume":
+        return value
+    else:
+        return urllib.parse.quote(value.encode())
 
 def defend_xss(cmd):
     for i in xss_list:
