@@ -29,6 +29,7 @@
     </tr>
     </thead>
     <tbody>
+    {% autoescape true %}
     {% for i in info %}
     <tr>
         <td class="center aligned">{{i['id']}}</td>
@@ -57,7 +58,7 @@
         <td class="center aligned">{{i['lasttime']}}</td>
     </tr>
     {% endfor %}
-
+    {% endautoescape %}
     </tbody>
 </table>
 
